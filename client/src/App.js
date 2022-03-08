@@ -1,7 +1,6 @@
 import { Route, Routes } from "react-router-dom";
-import { Layout, Listing, Profile } from "./components";
-import Home from "./pages";
-import Dashboard from "./pages/dashboard";
+import { Doctor, Layout, Listing, Profile } from "./components";
+import Dashboard from "./components/user.component/dashboard";
 import "./scss/main.scss";
 
 
@@ -10,9 +9,10 @@ function App() {
     <div>
    <Layout>
    <Routes>
-        <Route index element={<Home />} />
+      
         <Route path="dashboard" element={<Dashboard />}>
           <Route index element={<Profile />} />
+          <Route path="doctor" element={<Doctor />} />
           <Route path="listing" element={<Listing />} />
         </Route>
       </Routes>
