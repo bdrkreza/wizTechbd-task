@@ -1,0 +1,25 @@
+.brand_logo {
+  background: #508ff4;
+  color: white;
+  border-radius: 20px;
+  padding: 6px;
+}
+
+.right_top_header ul {
+  display: flex;
+  justify-content: space-between;
+  list-style: none;
+  li {
+    text-align: center;
+    margin-right: 12px;
+    border: solid 2px white;
+    background-color: white;
+    border-radius: 15px;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+  }
+  svg {
+    color: black;
+  }
+}
