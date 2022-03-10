@@ -1,13 +1,34 @@
-import { convertToRaw, EditorState } from "draft-js";
-import draftToHtml from "draftjs-to-html";
 import { useState } from "react";
 import { Card } from "react-bootstrap";
-import TextEditor from "./textEditor";
 
-export default function ListingForm({ onChangeValue, handleSubmit, userInfo }) {
-  let editorState = EditorState.createEmpty();
-  const [description, setDescription] = useState(editorState);
+export default function ProfileForm({isBook}) {
 
+
+
+  const [userInfo, setUserInfo] = useState({});
+
+  console.log(userInfo);
+  const onChangeValue = (e) => {
+    setUserInfo({
+      ...userInfo,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleSubmit = async (event) => {
+    try {
+      event.preventDefault();
+      
+    const dataSubmit = {
+      ...userInfo,
+      description: userInfo.description.value
+    };
+
+    console.log(dataSubmit);
+    } catch (error) {
+      throw error;
+    }
+  };
   return (
     <Card className="p-5 text-capitalize">
       <div>
@@ -22,6 +43,7 @@ export default function ListingForm({ onChangeValue, handleSubmit, userInfo }) {
           <input
             onChange={onChangeValue}
             style={{ width: "50%" }}
+            defaultValue={isBook.clinicname}
             type="text"
             name="clinicName"
             className="form-control"
@@ -36,8 +58,9 @@ export default function ListingForm({ onChangeValue, handleSubmit, userInfo }) {
           </label>
           <input
             onChange={onChangeValue}
+            defaultValue={isBook.address1}
             type="text"
-            name="address1"
+            name="address"
             className="form-control"
             id="inputEmail4"
             required
@@ -49,6 +72,7 @@ export default function ListingForm({ onChangeValue, handleSubmit, userInfo }) {
           </label>
           <input
             onChange={onChangeValue}
+            defaultValue={isBook.address2}
             type="text"
             name="address2"
             className="form-control"
@@ -60,6 +84,7 @@ export default function ListingForm({ onChangeValue, handleSubmit, userInfo }) {
           </label>
           <input
             onChange={onChangeValue}
+            defaultValue={isBook.zip}
             type="text"
             name="zip"
             className="form-control"
@@ -72,6 +97,7 @@ export default function ListingForm({ onChangeValue, handleSubmit, userInfo }) {
           </label>
           <input
             onChange={onChangeValue}
+            defaultValue={isBook.city}
             type="text"
             name="city"
             className="form-control"
@@ -84,6 +110,7 @@ export default function ListingForm({ onChangeValue, handleSubmit, userInfo }) {
           </label>
           <input
             onChange={onChangeValue}
+            defaultValue={isBook.country}
             type="text"
             name="country"
             className="form-control"
@@ -97,6 +124,7 @@ export default function ListingForm({ onChangeValue, handleSubmit, userInfo }) {
           </label>
           <input
             onChange={onChangeValue}
+            defaultValue={isBook.landLine1}
             name="landLine1"
             type="text"
             className="form-control"
@@ -110,64 +138,13 @@ export default function ListingForm({ onChangeValue, handleSubmit, userInfo }) {
           </label>
           <input
             onChange={onChangeValue}
+            defaultValue={isBook.landLine2}
             type="text"
             name="landLine2"
             className="form-control"
-            id="inputAddress2"
-            placeholder="landLine 2"
           />
         </div>
-
-        <div className="d-flex justify-content-evenly">
-          <div className="form-check">
-            <input
-              onChange={onChangeValue}
-              className="form-check-input"
-              name="disabledAccess"
-              type="checkbox"
-              id="gridCheck"
-            />
-            <label className="form-check-label" for="gridCheck">
-              Disabled Access
-            </label>
-          </div>
-          <div className="form-check">
-            <input
-              onChange={onChangeValue}
-              name="cash"
-              className="form-check-input"
-              type="checkbox"
-              id="gridCheck"
-            />
-            <label className="form-check-label" for="gridCheck">
-              Cash payments
-            </label>
-          </div>
-          <div className="form-check">
-            <input
-              onChange={onChangeValue}
-              name="credit"
-              className="form-check-input"
-              type="checkbox"
-              id="gridCheck"
-            />
-            <label className="form-check-label" for="gridCheck">
-              Credit card payments
-            </label>
-          </div>
-        </div>
-        <TextEditor setDescription={setDescription} description={description} />
-        <textarea
-          style={{ display: "none" }}
-          disabled
-          ref={(val) => (userInfo.description = val)}
-          value={draftToHtml(convertToRaw(description.getCurrentContent()))}
-        />
-        <div className="col-12">
-          <button type="submit" className="btn btn-primary">
-            Submit
-          </button>
-        </div>
+        <Card className="mt-4" dangerouslySetInnerHTML={{ __html: isBook.text}}  />
       </form>
     </Card>
   );

@@ -3,7 +3,8 @@ import Layout from "./layout/layout";
 import Dashboard from "./user.component/dashboard";
 import Doctor from "./user.component/doctor";
 import Listing from "./user.component/listing/listing";
-import Profile from "./user.component/profile";
+import Profile from "./user.component/profile/profile";
+
 
 
 export { AppBar, Profile, Doctor, Listing, Layout, Dashboard };
