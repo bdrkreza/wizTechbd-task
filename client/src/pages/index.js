@@ -1,9 +1,9 @@
-
+import { Dashboard } from "../components";
 
 export default function Home() {
   return (
     <div>
-      <h1>home</h1>
+      <Dashboard />
     </div>
   );
 }

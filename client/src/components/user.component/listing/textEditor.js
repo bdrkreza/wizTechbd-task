@@ -27,6 +27,7 @@ export default function TextEditor({setDescription,description}) {
       <Editor
         editorState={description}
         placeholder="Enter email body"
+
         onEditorStateChange={onEditorStateChange}
         toolbarClassName="toolbarClassName"
         wrapperClassName="wrapperClassName"
